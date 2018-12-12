@@ -38,7 +38,7 @@ function lowerCaseCheck(password){
 
   for(let i=0; i<password.length; i++){
 
-    if(password.charcodeAt(i) >= 97 && password.charcodeAt(i) <= 122){
+    if(password.charCodeAt(i) >= 97 && password.charCodeAt(i) <= 122){
       return true;
     }
 
@@ -131,11 +131,13 @@ function grade(password){
     return "good";
   }
   else if (passedAllChecks(password)){
-    return "great";
+    if (password.length >= 20){
+      return "super!"
+    }
+    
+   return "great";
   }
-  else if (passedAllChecks(password) && password.length >= 20){
-    return "super!"
-  }
+
 }
 
-console.log(grade("sasdfsdUsdfasdfadfad"));
+console.log(grade("12345678901234567890Aa*"));
