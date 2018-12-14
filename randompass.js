@@ -5,7 +5,7 @@ function randomPinn(len){
 
   for(let i= 0; i < len; i++){
 
-    let randomNumber = Math.floor(10*Math.random())+48;
+    let randomNumber = Math.floor(9*Math.random())+48;
     pass += String.fromCharCode(randomNumber);
   }
 
@@ -22,9 +22,17 @@ function randomWord(len){
   let pass = "";
 
   for(let i= 0; i < len; i++){
-
-    let randomNumber = Math.floor(26*Math.random())+97;
-    pass += String.fromCharCode(randomNumber);
+    let r = Math.random();
+    if(r < 0.5){
+      let randomNumber = Math.floor(25*Math.random())+97;
+      pass += String.fromCharCode(randomNumber);
+    }
+    else{
+      let randomNumber = Math.floor(25*Math.random())+97;
+      pass += String.fromCharCode(randomNumber);
+    }
+    
+    
   }
 
   return pass;
@@ -41,16 +49,19 @@ function randomPass(len){
   let pass = "";
 
   for(let i= 0; i < len; i++){
-
-    let randomNumber = Math.floor(26*Math.random())+97 || Math.floor(26*Math.random())+48;
-    pass += String.fromCharCode(randomNumber);
+    let r = Math.random();
+    if(r < 0.50){
+      pass =+ randomWord(1);
+    }
+    else{
+      pass += randomPinn(1);
+    }
+    
+    
   }
 
   return pass;
 }
-
-
-
 
 
 
@@ -63,13 +74,14 @@ function randomSpecialPass(len){
   let pass = "";
 
   for(let i= 0; i < len; i++){
-
-    let randomNumber = Math.floor(95*Math.random())+33;
-    pass += String.fromCharCode(randomNumber);
+    let r = Math.random();
+    if(r < 0.5){
+      let randomNumber = Math.floor(92*Math.random())+33;
+      pass += String.fromCharCode(randomNumber);
+    }
   }
-
+  
   return pass;
-
 }
 
 
@@ -82,19 +94,19 @@ function randomSuperPass(sup){
 
   let pass = "";
   
-for(let i= 0; i < len; i++){
-
-  let randomNumber = Math.floor(95*Math.random())+33;
-  pass += String.fromCharCode(randomNumber);
+  for(let i= 0; i < sup; i++){
+    let r = Math.random();
+    if(r < 0.5){
+      let randomNumber = Math.floor(92*Math.random())+33;
+      pass += String.fromCharCode(randomNumber);
+    }
+  }
+  
+  return pass;
 }
-
-return pass;
-
-}
-
 
 console.log(randomPinn(4));
 console.log(randomWord(5));
 console.log(randomPass(8));
 console.log(randomSpecialPass(8));
-console.log(randomSuperPass());
+console.log(randomSuperPass(20));
